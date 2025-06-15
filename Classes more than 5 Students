@@ -1,0 +1,7 @@
+import pandas as pd
+
+def find_classes(courses: pd.DataFrame) -> pd.DataFrame:
+    unique_students = courses.groupby(['class']).nunique().reset_index()
+    unique_students = unique_students[unique_students['student'] >= 5]
+    
+    return unique_students[['class']]
